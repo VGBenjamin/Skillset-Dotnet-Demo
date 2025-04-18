@@ -2,13 +2,6 @@ using SkillsetAPI.Services;
 
 var builder = WebApplication.CreateBuilder(args);
 
-// Configure to listen on all interfaces
-//builder.WebHost.ConfigureKestrel(serverOptions =>
-//{
-//    serverOptions.ListenAnyIP(5252);
-//    serverOptions.ListenAnyIP(7219, configure => configure.UseHttps());
-//});
-
 // Add services to the container.
 builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();

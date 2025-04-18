@@ -1,6 +1,0 @@
-@SkillsetAPI_HostAddress = http://localhost:5252
-
-GET {{SkillsetAPI_HostAddress}}/weatherforecast/
-Accept: application/json
-
-###
