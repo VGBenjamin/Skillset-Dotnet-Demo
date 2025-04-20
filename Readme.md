@@ -32,11 +32,50 @@ This extension showcases the skillset approach by providing three simple endpoin
 - Random user data
 
 ## Getting Started
-1. Clone the repository: 
+1. Using your web browser, log into your GitHub account <b>with your personal account</b>. It could be easier to use a private session to avoid mixing it with your professional account.
+
+2. Logout your professional account and login with your personal one also in VSCode. (you could use VSCode insiders if you prefer but it isn't required)
+
+3. Navigate to your profile’s home page ([https://github.com/yourhandle](https://github.com/yourhandle)).
+
+4. Clone the git repository
 
 ```
-git clone git@github.com:VGBenjamin/Skillset-Dotnet-Demo.git
-cd skillset-dotnet-demo
+git clone git@github.com:VGBenjamin/github-copilot-dlw-workshop-5.git
+```
+
+5. Once the repository is cloned swith to the develop branch (the main branch contains the full solution).
+
+```
+git checkout develop
+```
+
+## Build the application
+
+To simplify the workshop the applicaiton is already setup as mutch as possible so we will just complete the missing parts.
+
+1. First we will build an api to get some info from a service. This will simulate an business logic and a call to the database.
+To do, edit the ExternalApiService.cs file and add an impelmentation for the 3 methods.
+
+```
+public async Task<string> GetRandomCommitMessage()
+{
+   var response = await _httpClient.GetStringAsync("https://whatthecommit.com/index.txt");
+   return response.Trim();
+}
+
+public async Task<string> GetLoremIpsum(LoremIpsumRequest request)
+{
+   var url = $"https://baconipsum.com/api/?type=all-meat&paras={request.Paragraphs}";
+   var response = await _httpClient.GetStringAsync(url);
+   return response.Trim();
+}
+
+public async Task<string> GetRandomUser()
+{
+   var response = await _httpClient.GetStringAsync("https://randomuser.me/api/");
+   return response;
+}
 ```
 
 ## Usage
@@ -53,11 +92,7 @@ ngrok http http://localhost:8080
 ```
 
   2.2. Set the environment variables (use the ngrok generated url for the `FDQN`)<br/>
-  2.3. Run the application:
 
-```
-go run .
-```
 
 ## Accessing the Extension in Chat:
 
